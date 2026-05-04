@@ -15,13 +15,14 @@ fun main() {
 fun get(endpoint: String): String {
     val uri = URI("$BASE_URL/$endpoint").toURL()
     val connection = uri.openConnection() as HttpURLConnection
-
-    connection.requestMethod = "GET"
-    connection.setRequestProperty("Content-Type", "application/json")
-
-    return try {
-        connection.inputStream.bufferedReader().use { it.readText() }
-    } finally {
+    return connection.apply {
+        connectTimeout = 5000
+        readTimeout = 5000
+        requestMethod = "GET"
+        setRequestProperty("Content-Type", "application/json")
+    }.run {
+        inputStream.bufferedReader().use { it.readText() }
+    }.also {
         connection.disconnect()
     }
 }
