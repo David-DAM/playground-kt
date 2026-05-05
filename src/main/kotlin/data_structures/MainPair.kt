@@ -6,6 +6,5 @@ fun main() {
     println(pair.first)
     println(pair.second)
 
-    val triple = Triple("A", "B", "C")
-    println("Triple: $triple")
+    println("Pair destructuring completed")
 }

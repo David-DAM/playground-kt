@@ -10,7 +10,11 @@ fun main() {
     val name2: String? = "David"
 
     name2?.let {
-        println(it.length)
+        println("Value is present $it")
+    }
+
+    name1?.let {
+        println("Value is present $it")
     }
 }
 

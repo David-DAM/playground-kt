@@ -20,6 +20,10 @@ fun main() {
         println(age)
     }
 
+    repeat(5) {
+        println("Time $it")
+    }
+
     val measureTime = measureTime {
         "Hello World"
     }
